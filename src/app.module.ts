@@ -5,10 +5,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
+require('dotenv').config()
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://sids:sids@cluster0.qf8xn.mongodb.net/dbProduct?retryWrites=true&w=majority', { useNewUrlParser: true }),
+    MongooseModule.forRoot(process.env.DATABASE_URL, { useNewUrlParser: true }),
     UserModule,
     ProductModule,
     CategoryModule
